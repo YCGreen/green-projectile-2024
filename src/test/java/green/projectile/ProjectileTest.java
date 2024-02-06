@@ -8,8 +8,10 @@ public class ProjectileTest {
 
     @Test
     public void getX() {
-        //when
+        //given
         projectile.setSeconds(2.7);
+
+        //when
         double actual = projectile.getX();
 
         //then
@@ -18,8 +20,10 @@ public class ProjectileTest {
 
     @Test
     public void getY() {
-        //when
+        //given
         projectile.setSeconds(2.7);
+
+        //when
         double actual = projectile.getY();
 
         //then
