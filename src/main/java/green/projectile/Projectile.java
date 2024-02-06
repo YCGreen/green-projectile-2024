@@ -1,10 +1,11 @@
 package green.projectile;
 
 public class Projectile {
-    final double BASE_CASE = 0;
-    final double GRAVITY = 9.8;
-    final double HALF = 0.5;
-    double angle, velocity, seconds = BASE_CASE;
+    private static final double GRAVITY = 9.8;
+    private static final double HALF = 0.5;
+    double angle;
+    double velocity;
+    double seconds;
 
     public Projectile(double angle, double velocity, double seconds) {
         this.angle = Math.toRadians(angle);
@@ -12,11 +13,11 @@ public class Projectile {
         this.seconds = seconds;
     }
 
-    public double findX() {
+    public double getX() {
         return Math.cos(angle) * velocity * seconds;
     }
 
-    public double findY() {
+    public double getY() {
         return Math.sin(angle) * velocity * seconds - (HALF * GRAVITY * seconds * seconds);
     }
 
@@ -24,7 +25,10 @@ public class Projectile {
         return (velocity * Math.sin(angle)) / GRAVITY;
     }
 
-
+    //formula from https://www.omnicalculator.com/physics/maximum-height-projectile-motion#how-to-find-the-maximum-height-of-a-projectile
+    public double getPeakY() {
+        return ((velocity * Math.sin(angle))*(velocity * Math.sin(angle)))/(2*GRAVITY);
+    }
 
 
 }

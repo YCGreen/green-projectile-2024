@@ -1,36 +1,45 @@
 package green.projectile;
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals; //because assertEquals wasn't recognized and this was Intellij's solution
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class ProjectileTest {
-    Projectile projectile = new Projectile(31, 20, 2.7);
+    Projectile projectile = new Projectile(31, 65, 2.7);
 
     @Test
-    public void findX() {
+    public void getX() {
         //when
-        double actual = projectile.findX();
+        double actual = projectile.getX();
 
         //then
-        assertEquals(46.28703423791407, actual, .2);
+        Assertions.assertEquals(150.43285, actual, .2);
     }
 
     @Test
-    public void findY() {
+    public void getY() {
         //when
-        double actual = projectile.findY();
+        double actual = projectile.getY();
 
         //then
-        assertEquals(-7.908943954857083, actual, .2);
+        Assertions.assertEquals(54.6681869431, actual, .2);
     }
 
     @Test
     public void getApexTime() {
         //when
-        double actual = projectile.findY();
+        double actual = projectile.getApexTime();
 
         //then
-        assertEquals(1.051098112061335, actual, .2);
+        Assertions.assertEquals(3.416, actual, .2);
+    }
+
+    @Test
+    public void getPeakY() {
+        //when
+        double actual = projectile.getPeakY();
+
+        //then
+        Assertions.assertEquals(57.18068, actual, .1);
     }
 
 }

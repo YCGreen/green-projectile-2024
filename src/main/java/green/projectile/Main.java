@@ -2,8 +2,8 @@ package green.projectile;
 
 public class Main {
     public static void main(String[] args) {
-        Projectile myProjectile = new Projectile(31, 20, 2.7);
+        Projectile myProjectile = new Projectile(31, 65, 2.7);
 
-        System.out.println("x = " + myProjectile.findX() + ", y = " + myProjectile.findY() + "\nTime to apex = " + myProjectile.getApexTime());
+        System.out.println("x = " + myProjectile.getX() + ", y = " + myProjectile.getY() + "\nTime to apex = " + myProjectile.getApexTime());
     }
 }
