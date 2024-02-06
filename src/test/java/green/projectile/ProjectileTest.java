@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 public class ProjectileTest {
     Projectile projectile = new Projectile(31, 65);
-    projectile.setSeconds(2.7);
 
     @Test
     public void getX() {
         //when
+        projectile.setSeconds(2.7);
         double actual = projectile.getX();
 
         //then
@@ -19,6 +19,7 @@ public class ProjectileTest {
     @Test
     public void getY() {
         //when
+        projectile.setSeconds(2.7);
         double actual = projectile.getY();
 
         //then
