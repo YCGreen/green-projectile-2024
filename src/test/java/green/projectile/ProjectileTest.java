@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ProjectileTest {
-    Projectile projectile = new Projectile(31, 65, 2.7);
+    Projectile projectile = new Projectile(31, 65);
+    projectile.setSeconds(2.7);
 
     @Test
     public void getX() {

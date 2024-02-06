@@ -3,13 +3,16 @@ package green.projectile;
 public class Projectile {
     private static final double GRAVITY = 9.8;
     private static final double HALF = 0.5;
-    double angle;
-    double velocity;
-    double seconds;
+    private double angle;
+    private double velocity;
+    private double seconds;
 
-    public Projectile(double angle, double velocity, double seconds) {
+    public Projectile(double angle, double velocity) {
         this.angle = Math.toRadians(angle);
         this.velocity = velocity;
+    }
+
+    public void setSeconds(double seconds) {
         this.seconds = seconds;
     }
 
