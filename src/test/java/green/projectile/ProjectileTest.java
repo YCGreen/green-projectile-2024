@@ -15,7 +15,7 @@ public class ProjectileTest {
         double actual = projectile.getX();
 
         //then
-        Assertions.assertEquals(150.43285, actual, .2);
+        Assertions.assertEquals(150.43285, actual, .01);
     }
 
     @Test
@@ -27,7 +27,7 @@ public class ProjectileTest {
         double actual = projectile.getY();
 
         //then
-        Assertions.assertEquals(54.6681869431, actual, .2);
+        Assertions.assertEquals(54.6681869431, actual, .01);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ProjectileTest {
         double actual = projectile.getApexTime();
 
         //then
-        Assertions.assertEquals(3.416, actual, .2);
+        Assertions.assertEquals(3.416, actual, .01);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ProjectileTest {
         double actual = projectile.getPeakY();
 
         //then
-        Assertions.assertEquals(57.18068, actual, .1);
+        Assertions.assertEquals(57.18068, actual, .01);
     }
 
 }
