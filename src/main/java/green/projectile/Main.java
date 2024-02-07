@@ -5,6 +5,7 @@ public class Main {
         Projectile myProjectile = new Projectile(31, 65);
         myProjectile.setSeconds(2.7);
 
-        System.out.println("x = " + myProjectile.getX() + ", y = " + myProjectile.getY() + "\nTime to apex = " + myProjectile.getApexTime());
+        System.out.println("x = " + myProjectile.getX() + ", y = " + myProjectile.getY()
+                + "\nTime to apex = " + myProjectile.getApexTime());
     }
 }

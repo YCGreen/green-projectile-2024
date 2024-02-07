@@ -30,7 +30,7 @@ public class Projectile {
 
     //formula from https://www.omnicalculator.com/physics/maximum-height-projectile-motion#how-to-find-the-maximum-height-of-a-projectile
     public double getPeakY() {
-        return ((velocity * Math.sin(angle))*(velocity * Math.sin(angle)))/(2*GRAVITY);
+        return ((velocity * Math.sin(angle)) * (velocity * Math.sin(angle))) / (2 * GRAVITY);
     }
 
 
