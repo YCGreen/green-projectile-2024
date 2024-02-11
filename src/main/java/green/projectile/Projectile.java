@@ -34,7 +34,7 @@ public class Projectile {
     }
 
     public double getInterceptX() {
-        return getHorizontalVelocity() * getTime();
+        return getHorizontalVelocity() * getTimeAtXInt();
     }
 
     private double getHorizontalVelocity() {
@@ -45,7 +45,8 @@ public class Projectile {
         return velocity * Math.sin(angle);
     }
 
-    private double getTime() {
+    //method to get time at which the projectile reaches the x intercept
+    private double getTimeAtXInt() {
         double vertical = getVerticalVelocity();
         return (vertical + Math.sqrt(vertical * vertical - 2 * GRAVITY * getY())) / GRAVITY;
     }
