@@ -6,6 +6,6 @@ public class Main {
         myProjectile.setSeconds(2.7);
 
         System.out.println("x = " + myProjectile.getX() + ", y = " + myProjectile.getY()
-                + "\nTime to apex = " + myProjectile.getApexTime());
+                + "\nTime to apex = " + myProjectile.getPeakTime());
     }
 }

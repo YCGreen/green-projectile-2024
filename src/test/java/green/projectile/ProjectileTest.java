@@ -31,9 +31,9 @@ public class ProjectileTest {
     }
 
     @Test
-    public void getApexTime() {
+    public void getPeakTime() {
         //when
-        double actual = projectile.getApexTime();
+        double actual = projectile.getPeakTime();
 
         //then
         Assertions.assertEquals(3.416, actual, .01);
@@ -46,6 +46,15 @@ public class ProjectileTest {
 
         //then
         Assertions.assertEquals(57.18068, actual, .01);
+    }
+
+    @Test
+    public void getInterceptX() {
+        //when
+        double actual = projectile.getInterceptX();
+
+        //then
+        Assertions.assertEquals(380.65, actual, .01);
     }
 
 }
