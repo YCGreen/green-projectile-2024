@@ -24,7 +24,7 @@ public class Projectile {
         return Math.sin(angle) * velocity * seconds - (HALF * GRAVITY * seconds * seconds);
     }
 
-    public double getApexTime() {
+    public double getPeakTime() {
         return (velocity * Math.sin(angle)) / GRAVITY;
     }
 
@@ -33,5 +33,21 @@ public class Projectile {
         return ((velocity * Math.sin(angle)) * (velocity * Math.sin(angle))) / (2 * GRAVITY);
     }
 
+    public double getInterceptX() {
+        return getHorizontalVelocity() * getTimeAtXInt();
+    }
 
+    private double getHorizontalVelocity() {
+        return velocity * Math.cos(angle);
+    }
+
+    private double getVerticalVelocity() {
+        return velocity * Math.sin(angle);
+    }
+
+    //method to get time at which the projectile reaches the x intercept
+    private double getTimeAtXInt() {
+        double vertical = getVerticalVelocity();
+        return (vertical + Math.sqrt(vertical * vertical - 2 * GRAVITY * getY())) / GRAVITY;
+    }
 }
