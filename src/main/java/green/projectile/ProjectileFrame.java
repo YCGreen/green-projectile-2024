@@ -1,12 +1,9 @@
 package green.projectile;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class ProjectileFrame extends JFrame {
@@ -65,14 +62,8 @@ public class ProjectileFrame extends JFrame {
         add(blankLabel);
         add(calculate);
 
-        calculate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateFields(angleSlider, velocityField, secondsField, xField,
-                        yField, peakYField, interceptXField );
-
-            }
-        });
+        calculate.addActionListener(e -> updateFields(angleSlider, velocityField, secondsField, xField,
+                yField, peakYField, interceptXField ));
 
 
 
@@ -94,13 +85,8 @@ public class ProjectileFrame extends JFrame {
             }
         };
 
-        ChangeListener changeListener = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                updateFields(angleSlider, velocityField, secondsField, xField,
-                             yField, peakYField, interceptXField );
-            }
-        };
+        ChangeListener changeListener = e -> updateFields(angleSlider, velocityField, secondsField, xField,
+                     yField, peakYField, interceptXField );
 
         velocityField.getDocument().addDocumentListener(docListener);
         secondsField.getDocument().addDocumentListener(docListener);
