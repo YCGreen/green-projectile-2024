@@ -28,8 +28,6 @@ public class ProjectileFrame extends JFrame {
         JTextField peakYField = new JTextField();
         JTextField interceptXField = new JTextField();
 
-        JButton calculate = new JButton("Calculate");
-
         JSlider angleSlider = new JSlider(0, 90);
         angleSlider.setPaintTicks(true);
         angleSlider.setMajorTickSpacing(15);
@@ -60,12 +58,6 @@ public class ProjectileFrame extends JFrame {
         add(interceptXField);
 
         add(blankLabel);
-        add(calculate);
-
-        calculate.addActionListener(e -> updateFields(angleSlider, velocityField, secondsField, xField,
-                yField, peakYField, interceptXField ));
-
-
 
         DocumentListener docListener = new DocumentListener() {
             @Override
