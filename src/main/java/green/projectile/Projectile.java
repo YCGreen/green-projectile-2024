@@ -3,7 +3,7 @@ package green.projectile;
 public class Projectile {
     private static final double GRAVITY = 9.8;
     private static final double HALF = 0.5;
-    public double angle;
+    private double angle;
     private double velocity;
     private double seconds;
 
@@ -28,6 +28,10 @@ public class Projectile {
         return seconds;
     }
 
+    public double getAngle() {
+        return angle;
+    }
+
     public double getPeakTime() {
         return (velocity * Math.sin(angle)) / GRAVITY;
     }
@@ -38,24 +42,7 @@ public class Projectile {
     }
 
     public double getInterceptX() {
-        return getHorizontalVelocity() * getTimeAtXInt();
-    }
-
-    public double getTimeAtX(double x) {
-        return x / getHorizontalVelocity();
-    }
-
-    public double getTimeAtY(double y) {
-        return y / getVerticalVelocity();
-    }
-
-    public double getYAtX(double x) {
-        double seconds = getTimeAtX(x);
-        return Math.sin(angle) * velocity * seconds - (HALF * GRAVITY * seconds * seconds);
-    }
-
-    public double getXAtY(double y) {
-        return getHorizontalVelocity() * getTimeAtY(y);
+        return getHorizontalVelocity() * getTotalTime();
     }
 
     private double getHorizontalVelocity() {
@@ -67,9 +54,15 @@ public class Projectile {
     }
 
     //method to get time at which the projectile reaches the x intercept
-    private double getTimeAtXInt() {
+    public double getTotalTime() {
         double vertical = getVerticalVelocity();
         return (vertical + Math.sqrt(vertical * vertical - 2 * GRAVITY * getY())) / GRAVITY;
+    }
+
+    //this method returns the same number as getTotalTime, but projectileGraph only works properly when I use this one. Will probably
+    //just delete the other but I'd like to figure out why first
+    public double getTotalFlightTime() {
+        return (2 * velocity * Math.sin(angle) / GRAVITY);
     }
 
 }
