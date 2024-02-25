@@ -3,7 +3,7 @@ package green.projectile;
 public class Projectile {
     private static final double GRAVITY = 9.8;
     private static final double HALF = 0.5;
-    private double angle;
+    public double angle;
     private double velocity;
     private double seconds;
 
@@ -24,6 +24,10 @@ public class Projectile {
         return Math.sin(angle) * velocity * seconds - (HALF * GRAVITY * seconds * seconds);
     }
 
+    public double getSeconds() {
+        return seconds;
+    }
+
     public double getPeakTime() {
         return (velocity * Math.sin(angle)) / GRAVITY;
     }
@@ -35,6 +39,23 @@ public class Projectile {
 
     public double getInterceptX() {
         return getHorizontalVelocity() * getTimeAtXInt();
+    }
+
+    public double getTimeAtX(double x) {
+        return x / getHorizontalVelocity();
+    }
+
+    public double getTimeAtY(double y) {
+        return y / getVerticalVelocity();
+    }
+
+    public double getYAtX(double x) {
+        double seconds = getTimeAtX(x);
+        return Math.sin(angle) * velocity * seconds - (HALF * GRAVITY * seconds * seconds);
+    }
+
+    public double getXAtY(double y) {
+        return getHorizontalVelocity() * getTimeAtY(y);
     }
 
     private double getHorizontalVelocity() {
@@ -50,4 +71,5 @@ public class Projectile {
         double vertical = getVerticalVelocity();
         return (vertical + Math.sqrt(vertical * vertical - 2 * GRAVITY * getY())) / GRAVITY;
     }
+
 }
