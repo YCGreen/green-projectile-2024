@@ -42,7 +42,7 @@ public class Projectile {
     }
 
     public double getInterceptX() {
-        return getHorizontalVelocity() * getTotalTime();
+        return getHorizontalVelocity() * getTotalFlightTime();
     }
 
     private double getHorizontalVelocity() {
@@ -53,14 +53,6 @@ public class Projectile {
         return velocity * Math.sin(angle);
     }
 
-    //method to get time at which the projectile reaches the x intercept
-    public double getTotalTime() {
-        double vertical = getVerticalVelocity();
-        return (vertical + Math.sqrt(vertical * vertical - 2 * GRAVITY * getY())) / GRAVITY;
-    }
-
-    //this method returns the same number as getTotalTime, but projectileGraph only works properly when I use this one. Will probably
-    //just delete the other but I'd like to figure out why first
     public double getTotalFlightTime() {
         return (2 * velocity * Math.sin(angle) / GRAVITY);
     }

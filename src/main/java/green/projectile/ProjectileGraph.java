@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProjectileGraph extends JComponent {
-    private final int POINTS = 10;
 
     private Projectile projectile = new Projectile(0,0);
 
@@ -16,16 +15,13 @@ public class ProjectileGraph extends JComponent {
         g.setColor(Color.BLACK);
 
         double totalTime = projectile.getTotalFlightTime();
-        double interval = (totalTime)/POINTS;
-        double secondsElapsed = 0;
         projectile.setSeconds(0);
 
-        for(int i = 0; i < POINTS; i++) {
+        for(double i = 0; i <= totalTime; i += .01) {
             double currX = projectile.getX();
             double currY = projectile.getY();
 
-            secondsElapsed += interval;
-            projectile.setSeconds(secondsElapsed);
+            projectile.setSeconds(i);
 
             g.drawLine((int)currX, -(int)currY, (int)projectile.getX(), -(int)projectile.getY());
         }
