@@ -17,7 +17,7 @@ public class ProjectileGraph extends JComponent {
         double totalTime = projectile.getTotalFlightTime();
         projectile.setSeconds(0);
 
-        for(double i = 0; i <= totalTime; i += .01) {
+        for(double i = 0; i <= totalTime; i += .1) {
             double currX = projectile.getX();
             double currY = projectile.getY();
 
