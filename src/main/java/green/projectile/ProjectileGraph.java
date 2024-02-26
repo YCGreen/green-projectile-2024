@@ -28,10 +28,9 @@ public class ProjectileGraph extends JComponent {
 
         g.setColor(Color.BLUE);
 
-        double peakY = projectile.getPeakY();
+
         projectile.setSeconds(totalTime / 2);
-        double xMid = projectile.getX();
-        g.fillOval((int)xMid - 5, -(int)peakY - 5, 10, 10);
+        g.fillOval((int)projectile.getX() - 5, -(int)projectile.getY() - 5, 10, 10);
 
     }
 
