@@ -12,8 +12,10 @@ public class Projectile {
         this.velocity = velocity;
     }
 
-    public void setSeconds(double seconds) {
-        this.seconds = seconds;
+    public Projectile(Projectile projectile) {
+        this.angle = projectile.angle;
+        this.velocity = projectile.velocity;
+        this.seconds = projectile.seconds;
     }
 
     public double getX() {
@@ -26,6 +28,10 @@ public class Projectile {
 
     public double getSeconds() {
         return seconds;
+    }
+
+    public void setSeconds(double seconds) {
+        this.seconds = seconds;
     }
 
     public double getAngle() {
