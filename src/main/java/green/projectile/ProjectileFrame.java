@@ -20,35 +20,50 @@ public class ProjectileFrame extends JFrame {
         JPanel west = new JPanel();
         main.add(west, BorderLayout.WEST);
 
-        west.setLayout(new GridLayout(8,2));
+        west.setLayout(new GridLayout(10,2));
 
         JLabel velocityLabel = new JLabel("Velocity");
+        JLabel velocityAnsLabel = new JLabel();
         JLabel angleLabel = new JLabel("Angle");
+        JLabel angleAnsLabel = new JLabel();
         JLabel secondsLabel = new JLabel("Seconds");
         JLabel xLabel = new JLabel("X");
         JLabel yLabel = new JLabel("Y");
         JLabel blankLabel = new JLabel("");
         JLabel peakYLabel = new JLabel("Peak Y:");
+        JLabel peakYAnsLabel = new JLabel();
         JLabel interceptXLabel = new JLabel("X Intercept:");
+        JLabel interceptXAnsLabel = new JLabel();
+        JLabel emptyField1 = new JLabel("");
+        JLabel emptyField2 = new JLabel("");
 
-        JTextField velocityField = new JTextField();
-        JTextField secondsField = new JTextField();
+        JTextField secondsField = new JTextField("2.7");
         JTextField xField = new JTextField();
         JTextField yField = new JTextField();
-        JTextField peakYField = new JTextField();
-        JTextField interceptXField = new JTextField();
+
+        JSlider velocitySlider = new JSlider(0, 100);
+        velocitySlider.setPaintTicks(true);
+        velocitySlider.setMajorTickSpacing(15);
+        velocitySlider.setMinorTickSpacing(5);
+        velocitySlider.setPaintLabels(true);
+        velocitySlider.setValue(65);
 
         JSlider angleSlider = new JSlider(0, 90);
         angleSlider.setPaintTicks(true);
         angleSlider.setMajorTickSpacing(15);
         angleSlider.setMinorTickSpacing(5);
         angleSlider.setPaintLabels(true);
+        angleSlider.setValue(31);
 
         west.add(velocityLabel);
-        west.add(velocityField);
+        west.add(velocitySlider);
+        west.add(emptyField1);
+        west.add(velocityAnsLabel);
 
         west.add(angleLabel);
         west.add(angleSlider);
+        west.add(emptyField2);
+        west.add(angleAnsLabel);
 
         west.add(secondsLabel);
         west.add(secondsField);
@@ -60,18 +75,21 @@ public class ProjectileFrame extends JFrame {
         west.add(yField);
 
         west.add(peakYLabel);
-        west.add(peakYField);
+        west.add(peakYAnsLabel);
 
         west.add(interceptXLabel);
-        west.add(interceptXField);
+        west.add(interceptXAnsLabel);
 
         west.add(blankLabel);
+
+        updateFields(angleSlider, angleAnsLabel, velocitySlider, velocityAnsLabel, secondsField, xField,
+                yField, peakYAnsLabel, interceptXAnsLabel );
 
         DocumentListener docListener = new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                updateFields(angleSlider, velocityField, secondsField, xField,
-                        yField, peakYField, interceptXField );
+                updateFields(angleSlider, angleAnsLabel, velocitySlider, velocityAnsLabel, secondsField, xField,
+                        yField, peakYAnsLabel, interceptXAnsLabel );
             }
 
             @Override
@@ -85,33 +103,33 @@ public class ProjectileFrame extends JFrame {
             }
         };
 
-        ChangeListener changeListener = e -> updateFields(angleSlider, velocityField, secondsField, xField,
-                     yField, peakYField, interceptXField );
+        ChangeListener changeListener = e -> updateFields(angleSlider, angleAnsLabel, velocitySlider, velocityAnsLabel, secondsField, xField,
+                     yField, peakYAnsLabel, interceptXAnsLabel );
 
-        velocityField.getDocument().addDocumentListener(docListener);
+        velocitySlider.addChangeListener(changeListener);//.addDocumentListener(docListener);
         secondsField.getDocument().addDocumentListener(docListener);
         angleSlider.addChangeListener(changeListener);
 
 
         main.add(graph, BorderLayout.CENTER);
 
-
-
     }
 
-    private void updateFields(JSlider angleSlider, JTextField velocityField, JTextField secondsField,
-                              JTextField xField, JTextField yField, JTextField peakYField, JTextField interceptXField) {
+    private void updateFields(JSlider angleSlider, JLabel angleAnsLabel, JSlider velocitySlider, JLabel velocityAnsLabel, JTextField secondsField,
+                              JTextField xField, JTextField yField, JLabel peakYAnsLabel, JLabel interceptXAnsLabel) {
         Projectile projectile = new Projectile(
                 angleSlider.getValue(),
-                Double.parseDouble(velocityField.getText())
+                velocitySlider.getValue()
         );
 
         double seconds = Double.parseDouble(secondsField.getText());
         projectile.setSeconds(seconds);
+        angleAnsLabel.setText(Double.toString(angleSlider.getValue()));
+        velocityAnsLabel.setText(Double.toString(velocitySlider.getValue()));
         xField.setText(Double.toString(projectile.getX()));
         yField.setText(Double.toString(projectile.getY()));
-        peakYField.setText(Double.toString(projectile.getPeakY()));
-        interceptXField.setText(Double.toString(projectile.getInterceptX()));
+        peakYAnsLabel.setText(Double.toString(projectile.getPeakY()));
+        interceptXAnsLabel.setText(Double.toString(projectile.getInterceptX()));
 
         graph.setProjectile(projectile);
 
