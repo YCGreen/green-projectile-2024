@@ -87,6 +87,7 @@ public class ProjectileFrame extends JFrame {
         updateFields(angleSlider, angleAnsLabel, velocitySlider, velocityAnsLabel, secondsField, xField,
                 yField, peakYAnsLabel, interceptXAnsLabel);
 
+
         DocumentListener docListener = new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -133,7 +134,7 @@ public class ProjectileFrame extends JFrame {
         peakYAnsLabel.setText(Double.toString(projectile.getPeakY()));
         interceptXAnsLabel.setText(Double.toString(projectile.getInterceptX()));
 
-        graph.setProjectile(projectile);
+        graph.setProjectile(projectile, (int) seconds);
 
     }
 

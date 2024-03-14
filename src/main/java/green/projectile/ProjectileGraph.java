@@ -8,6 +8,7 @@ public class ProjectileGraph extends JComponent {
 
     private static final DecimalFormat FORMAT = new DecimalFormat("0.00");
     private Projectile projectile = new Projectile(0, 0);
+    private int secondsOnEnter = 0;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -34,7 +35,7 @@ public class ProjectileGraph extends JComponent {
 
         g.translate(30, -30);
 
-        double secondsOnEnter = projectile.getSeconds();
+        //   double secondsOnEnter = projectile.getSeconds();
         double totalTime = projectile.getTotalFlightTime();
         projectile.setSeconds(0);
 
@@ -61,10 +62,10 @@ public class ProjectileGraph extends JComponent {
 
         g.setColor(Color.RED);
 
-        Projectile secProjectile = new Projectile(projectile);
-        secProjectile.setSeconds(secondsOnEnter);
-        double xAtSec = secProjectile.getX();
-        double yAtSec = secProjectile.getY();
+        Projectile origProjectile = new Projectile(projectile);
+        origProjectile.setSeconds(secondsOnEnter);
+        double xAtSec = origProjectile.getX();
+        double yAtSec = origProjectile.getY();
         String xStr = FORMAT.format(xAtSec);
         String yStr = FORMAT.format(yAtSec);
 
@@ -73,8 +74,9 @@ public class ProjectileGraph extends JComponent {
 
     }
 
-    public void setProjectile(Projectile projectile) {
+    public void setProjectile(Projectile projectile, int seconds) {
         this.projectile = projectile;
+        secondsOnEnter = seconds;
         repaint();
     }
 
