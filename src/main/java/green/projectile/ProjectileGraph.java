@@ -1,12 +1,13 @@
 package green.projectile;
+
 import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
 
 public class ProjectileGraph extends JComponent {
 
-    private Projectile projectile = new Projectile(0,0);
     private static final DecimalFormat FORMAT = new DecimalFormat("0.00");
+    private Projectile projectile = new Projectile(0, 0);
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -21,7 +22,7 @@ public class ProjectileGraph extends JComponent {
         g.setColor(Color.LIGHT_GRAY);
 
         int maxArea = Math.max(getHeight(), getWidth());
-        for(int i = 0; i < maxArea; i += 30) {
+        for (int i = 0; i < maxArea; i += 30) {
             g.drawLine(0, -i, getWidth(), -i);
             g.drawLine(i, 0, i, -getHeight());
         }
@@ -37,13 +38,13 @@ public class ProjectileGraph extends JComponent {
         double totalTime = projectile.getTotalFlightTime();
         projectile.setSeconds(0);
 
-        for(double i = 0; i <= totalTime; i += .1) {
+        for (double i = 0; i <= totalTime; i += .1) {
             double currX = projectile.getX();
             double currY = projectile.getY();
 
             projectile.setSeconds(i);
 
-            g.drawLine((int)currX, -(int)currY, (int)projectile.getX(), -(int)projectile.getY());
+            g.drawLine((int) currX, -(int) currY, (int) projectile.getX(), -(int) projectile.getY());
         }
 
         g.setColor(Color.BLUE);
@@ -55,8 +56,8 @@ public class ProjectileGraph extends JComponent {
         String peakXStr = FORMAT.format(peakX);
         String peakYStr = FORMAT.format(-peakY);
 
-        g.fillOval((int)peakX - 5, (int)peakY - 5, 10, 10);
-        g.drawString("(" + peakXStr + ", " + peakYStr + ")", (int)peakX, (int)peakY - 10);
+        g.fillOval((int) peakX - 5, (int) peakY - 5, 10, 10);
+        g.drawString("(" + peakXStr + ", " + peakYStr + ")", (int) peakX, (int) peakY - 10);
 
         g.setColor(Color.RED);
 
@@ -67,8 +68,8 @@ public class ProjectileGraph extends JComponent {
         String xStr = FORMAT.format(xAtSec);
         String yStr = FORMAT.format(yAtSec);
 
-        g.fillOval((int)xAtSec - 5, -(int)yAtSec - 5, 10, 10);
-        g.drawString("(" + xStr + ", " + yStr + ")", (int)xAtSec, -(int)yAtSec - 10);
+        g.fillOval((int) xAtSec - 5, -(int) yAtSec - 5, 10, 10);
+        g.drawString("(" + xStr + ", " + yStr + ")", (int) xAtSec, -(int) yAtSec - 10);
 
     }
 
@@ -76,8 +77,6 @@ public class ProjectileGraph extends JComponent {
         this.projectile = projectile;
         repaint();
     }
-
-
 
 
 }

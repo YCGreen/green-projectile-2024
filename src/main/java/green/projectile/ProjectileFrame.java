@@ -1,4 +1,5 @@
 package green.projectile;
+
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
@@ -8,6 +9,7 @@ import java.awt.*;
 
 public class ProjectileFrame extends JFrame {
     ProjectileGraph graph = new ProjectileGraph();
+
     public ProjectileFrame() {
         setSize(800, 600);
         setTitle("Projectile Calculator");
@@ -20,7 +22,7 @@ public class ProjectileFrame extends JFrame {
         JPanel west = new JPanel();
         main.add(west, BorderLayout.WEST);
 
-        west.setLayout(new GridLayout(10,2));
+        west.setLayout(new GridLayout(10, 2));
 
         JLabel velocityLabel = new JLabel("Velocity");
         JLabel velocityAnsLabel = new JLabel();
@@ -83,13 +85,13 @@ public class ProjectileFrame extends JFrame {
         west.add(blankLabel);
 
         updateFields(angleSlider, angleAnsLabel, velocitySlider, velocityAnsLabel, secondsField, xField,
-                yField, peakYAnsLabel, interceptXAnsLabel );
+                yField, peakYAnsLabel, interceptXAnsLabel);
 
         DocumentListener docListener = new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 updateFields(angleSlider, angleAnsLabel, velocitySlider, velocityAnsLabel, secondsField, xField,
-                        yField, peakYAnsLabel, interceptXAnsLabel );
+                        yField, peakYAnsLabel, interceptXAnsLabel);
             }
 
             @Override
@@ -104,7 +106,7 @@ public class ProjectileFrame extends JFrame {
         };
 
         ChangeListener changeListener = e -> updateFields(angleSlider, angleAnsLabel, velocitySlider, velocityAnsLabel, secondsField, xField,
-                     yField, peakYAnsLabel, interceptXAnsLabel );
+                yField, peakYAnsLabel, interceptXAnsLabel);
 
         velocitySlider.addChangeListener(changeListener);//.addDocumentListener(docListener);
         secondsField.getDocument().addDocumentListener(docListener);

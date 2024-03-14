@@ -18,10 +18,6 @@ public class Projectile {
         this.seconds = projectile.seconds;
     }
 
-    public void setSeconds(double seconds) {
-        this.seconds = seconds;
-    }
-
     public double getX() {
         return Math.cos(angle) * velocity * seconds;
     }
@@ -32,6 +28,10 @@ public class Projectile {
 
     public double getSeconds() {
         return seconds;
+    }
+
+    public void setSeconds(double seconds) {
+        this.seconds = seconds;
     }
 
     public double getAngle() {
